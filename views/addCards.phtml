@@ -1,0 +1,43 @@
+<?php if (isset($_SESSION['user'])): ?>
+    <h1>Ajouter, supprimer ou modifier une carte d'un paquet</h1>
+
+    <?php if (isset($_SESSION['errors'])): ?>
+        <p class="error"><?= $_SESSION['errors']; ?></p>
+        <?php unset($_SESSION['errors']);
+    endif;
+
+    if (isset($_SESSION['valids'])): ?>
+        <p class="success"><?= $_SESSION['valids']; ?></p>
+        <?php unset($_SESSION['valids']);
+    endif; ?>
+
+    <form action="index.php?route=submitNewCards" method="POST">
+        <fieldset>
+            <label for="recto">Entrez le recto de la nouvelle carte :</label>
+            <input class="rectoForm" type="text" name="recto" size="10">
+        </fieldset>
+
+        <fieldset>
+            <label for="verso">Entrez le verso de la nouvelle carte :</label>
+            <input class="versoForm" type="text" name="verso" size="10">
+        </fieldset>
+        
+        <fieldset>
+            <label for="package">Dans quel paquet souhaitez-vous mettre la carte ?</label>
+            <select name="packages_id">
+                <?php foreach ($packages as $package): ?>
+                    <option value="<?= $package['id']; ?>" name="package_id"><?= htmlspecialchars($package['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <input type="hidden" name="addCardsToken" value="<?= $addCardsToken; ?>">
+            <input type="submit" value="Valider"/>
+        </fieldset>
+    </form>
+
+<?php else: 
+    header('location: index.php?route=home');
+    exit;
+endif; ?>

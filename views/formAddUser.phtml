@@ -1,0 +1,61 @@
+<?php if (!isset($_SESSION['user'])):
+
+    if (isset($_SESSION['errors'])): ?>
+        <p class="error"><?= $_SESSION['errors']; ?></p>
+        <?php unset($_SESSION['errors']);
+    endif;
+    
+    if (isset($_SESSION['valids'])): ?>
+        <p class="success"><?= $_SESSION['valids']; ?></p>
+        <?php unset($_SESSION['valids']);
+    endif; ?>
+    
+    <h1>Création de compte</h1>
+    <h2>Veuillez remplir tous les champs !</h2>
+    
+    <form action="index.php?route=submitFormAddUser" method="POST">
+        <fieldset>
+            <label for="newEmail">Entrez votre email</label>
+            <input type="email" name="newEmail" size="10" id="newEmail">
+        </fieldset>
+
+        <fieldset>
+            <label for="newPassword">Choisissez un mot de passe</label>
+            <input type="password" name="newPassword" id="newPassword" size="10">
+        </fieldset>
+
+        <fieldset>
+            <label for="password_confirme">Confirmez le mot de passe choisi</label>
+            <input type="password" name="password_confirme" id="password_confirme" size="10">
+        </fieldset>
+
+        <fieldset>
+            <input type="hidden" name="newToken" value="<?= $newToken; ?>">
+            <input type="submit" value="Valider" id="newSubmit"/>
+        </fieldset>
+    </form>
+    
+    <div class="test"><h1>Connexion</h1></div>
+    <h2>Veuillez remplir tous les champs !</h2>
+    
+    <form action="index.php?route=connection" method="POST">
+        <fieldset>
+            <label for="email">Entrez votre email</label>
+            <input type="email" name="email" size="10" id="email">
+        </fieldset>
+
+        <fieldset>
+            <label for="password">Entrez votre mot de passe</label>
+            <input type="password" name="password" id="password" size="10">
+        </fieldset>
+
+        <fieldset>
+            <input type="hidden" name="logToken" value="<?= $logToken; ?>">
+            <input type="submit" value="Valider" id="submit"/>
+        </fieldset>
+    </form>
+
+<?php else: 
+    header('location: index.php?route=home');
+    exit;
+endif; ?>

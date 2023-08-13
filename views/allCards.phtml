@@ -1,0 +1,24 @@
+<?php if (isset($_SESSION['user'])): ?>
+    <h1>Voici la liste des cartes</h1>
+
+    <form id="search" method="POST">
+        <fieldset>
+            <label for="searchBar">Chercher une carte</label>
+            <input id="searchBar" name="searchBar" type="text">
+        </fieldset>
+
+        <table id="cards">
+            <?php foreach ($cards as $card): ?>
+                <tr class="listCards">
+                    <td><p class="rectoAll"><?= htmlspecialchars($card['verso']); ?></p></td>
+                    <td><p class="versoAll"><?= htmlspecialchars($card['recto']); ?></p></td>
+                    <td class="supprimer" id="<?= $card['id']; ?>"><a title="Supprimer la carte" class="delete" href="index.php?route=deleteCard&id=<?= $card['id']; ?>">Supprimer</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </form>
+
+<?php else:
+    header('location: index.php?route=home');
+    exit;
+endif; ?>

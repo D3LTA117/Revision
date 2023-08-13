@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Révision">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="public/css/style.css" type="text/css">
+	<title><?= isset($title) ? $title : "Bienvenue sur mon site de révision" ?></title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="icons">&#9881; Menu</div>
+            <nav class="menuBurger">
+                <ul>
+                    <li><a href="index.php?route=home">Home</a></li>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <li><a title="Aller à la page pour ajouter une carte à un paquet" href="index.php?route=addCards">Ajouter une carte</a></li>
+                        <li><a title="Aller à la page pour modifier une carte d'un paquet" href="index.php?route=packagesToModify">Modifier un paquet</a></li>
+                        <li><a title="Se déconnecter" href="index.php?route=disconnect">Déconnexion</a></li>
+                    <?php else: ?>
+                        <li><a title="Créer son compte ou se connecter" href="index.php?route=addUsers">Création de compte/Connexion</a></li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <?php include $template ?>
+        </main>
+
+        <footer class="footer">
+            <p class="animateFooter">Voici mon footer</p>
+        </footer>
+    </div>
+
+    <script type="module" src="public/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<h1>Bienvenue sur mon site de révision</h1>
+<section class="home_section_header">
+    <article>
+        <p>Le but de mon site est faire des révisions. Tout d'abord, l'utilisateur créer un paquet de cartes de quelque chose qu'il veut réviser. Ensuite, il crée des cartes avec un recto et un verso. Le côté recto sera la question et le verso la réponse. En fonction de si l'utilisateur connaît facilement ou non la réponse, la carte repassera plus ou moins souvent suivant un certain temps.</p>
+    </article>
+
+    <article class="home_article_ul">
+        <p>Voici la liste des possibilités :</p>
+        <ul>
+            <li>A revoir : 10 minutes</li>
+            <li>Très difficile : 1 jour</li>
+            <li>Difficile : 2 jours</li>
+            <li>Correct : 4 jours</li>
+            <li>Facile : 1 semaine</li>
+            <li>Très facile : 1 mois</li>
+        </ul>
+    </article>
+    
+    <article>
+        <p>Il manque bien évidemment des fonctionnalités mais par manque de temps j'ai préféré me concentrer sur les critères du projet pour gagner un maximum de point.</p>
+    </article>
+</section>
+
+<!-- Permet de déterminer si un utilisateur est connecté ou non pour donner la liste des paquets à réviser -->
+<section>
+    <?php if (isset($_SESSION['user'])):
+        unset($_SESSION['package']);
+
+        if (isset($_SESSION['errors'])): ?>
+            <p class="error"><?= $_SESSION['errors']; ?></p>
+            <?php unset($_SESSION['errors']);
+        endif;
+
+        if (isset($_SESSION['valids'])): ?>
+            <p class="success"><?= $_SESSION['valids']; ?></p>
+            <?php unset($_SESSION['valids']);
+        endif; ?>
+
+        <h2>Choisissez un paquet à réviser</h2>
+        
+        <ul class="packagesTraining">
+            <?php foreach ($packages as $package): ?>
+                <li><a title="Choisir le paquet à réviser" href="index.php?route=training&id=<?= $package['id']; ?>"><?= htmlspecialchars($package['name']); ?>
+                <?php $_SESSION['packageName'] = $package['name']; ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</section>

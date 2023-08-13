@@ -1,0 +1,42 @@
+<?php if (isset($_SESSION['user'])): ?>
+
+    <h1>Sélectionner un paquet de carte à modifier</h1>
+
+    <?php if (isset($_SESSION['errors'])): ?>
+        <p class="error"><?= $_SESSION['errors']; ?></p>
+        <?php unset($_SESSION['errors']);
+    endif;
+
+    if (isset($_SESSION['valids'])): ?>
+        <p class="success"><?= $_SESSION['valids']; ?></p>
+        <?php unset($_SESSION['valids']);
+    endif; ?>
+    
+    <section>
+        <article>
+            <ul class="packagesTraining">
+                <?php foreach ($packages as $package): ?>
+                    <li><a title="Modifier le paquet" href="index.php?route=allCards&id=<?= $package['id']; ?>"><?= htmlspecialchars($package['name']); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </article>
+
+        <article>
+            <form action="index.php?route=submitFormAddPackage" method="POST">
+                <fieldset>
+                    <label for="nameFormPackage">Entrez le nom du nouveau paquet de carte :</label>
+                    <input class="nameFormPackage" type="text" name="nameFormPackage" size="10">
+                </fieldset>
+                
+                <fieldset>
+                    <input type="hidden" name="addPackageToken" value="<?= $addPackageToken; ?>">
+                    <input type="submit" value="Valider"/>
+                </fieldset>
+            </form>
+        </article>
+    </section>
+
+<?php else: 
+    header('location: index.php?route=home');
+    exit;
+endif; ?>

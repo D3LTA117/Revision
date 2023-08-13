@@ -1,0 +1,311 @@
+/**********************************************
+**************** RESSOURCES *******************
+**********************************************/
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@keyframes active {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes animateFooter {
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
+/**********************************************
+*************** MEDIA QUERIES *****************
+**********************************************/
+
+@media screen and (min-width: 630px) {
+  .header ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .header li {
+    padding: 10px;
+  }
+
+  #hidden li {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .training {
+    justify-content: space-around;
+  }
+
+  .icons {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 629px) {
+  .icons {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+  }
+
+  .menuBurger ul {
+    left: -100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .training {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .training a {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .training a:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .training li {
+    margin: 10px 0;
+  }
+}
+
+/**********************************************
+****************** CORPS **********************
+**********************************************/
+
+body {
+  background: url("../img/telechargement.png") no-repeat center center fixed;
+  background-size: cover;
+  --color-a: rgb(100, 100, 255);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+}
+
+/**********************************************
+****************** HEADER *********************
+**********************************************/
+
+h1 {
+  padding: 0;
+}
+
+h2 {
+  margin: 10px;
+}
+
+.header a {
+  color: var(--color-a);
+  text-decoration: none;
+}
+
+::-moz-list-bullet {
+  content: "";
+}
+
+/**********************************************
+**************** MENU BURGER ******************
+**********************************************/
+
+nav.active ul {
+  left: 0;
+  width: 100%;
+  max-width: 629px;
+  text-align: center;
+  animation: active 0.5s linear both;
+}
+
+nav.active ul li {
+  font-size: 20px;
+}
+
+nav.active ul li:hover {
+  background-color: white;
+}
+
+nav.active ul li a {
+  display: flex;
+  justify-content: center;
+  margin: 10% 0;
+  padding: 10% 0;
+}
+
+nav.active ul li a:hover {
+  color: black;
+}
+
+/**********************************************
+******************** MAIN *********************
+**********************************************/
+
+a {
+  text-decoration: none;
+}
+.hidden {
+  display: none;
+  flex-direction: column;
+}
+
+.home_section_header {
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.home_article_ul {
+  margin: 20px 0;
+}
+
+.error {
+  color: red;
+  margin: 20px;
+}
+
+.success {
+  color: green;
+  margin: 20px;
+}
+
+.recto {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.verso {
+  font-family: "Barlow Condensed", sans-serif;
+  border-top: 1px solid grey;
+  padding-top: 10px;
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+#hidden li {
+  padding: 10px;
+}
+
+.packagesTraining li {
+  padding: 10px;
+}
+
+.packagesTraining a {
+  color: var(--color-a);
+}
+
+fieldset {
+  max-width: 500px;
+  border: dashed red 1px;
+  padding: 10px 0;
+  margin: 5px auto;
+}
+
+.listCards {
+  max-width: 300px;
+  border: solid blue 1px;
+}
+
+.listCards:nth-child(odd) {
+  background-color: grey;
+}
+
+.listCards:hover {
+  background-color: white;
+  color: black;
+}
+
+#cards {
+  margin: 20px auto;
+}
+
+#cards td {
+  padding: 20px;
+}
+
+.training {
+  display: flex;
+}
+
+/**********************************************
+****************** BUTTONS ********************
+**********************************************/
+
+.response {
+  padding: 5px;
+  margin: 20px auto;
+  width: 125px;
+  border: 1px solid white;
+}
+
+.response:hover {
+  background-color: red;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
+.replay {
+  color: rgb(100, 0, 0);
+}
+
+.veryHard {
+  color: red;
+}
+
+.hard {
+  color: orange;
+}
+
+.correct {
+  color: yellow;
+}
+
+.easy {
+  color: green;
+}
+
+.veryEasy {
+  color: blue;
+}
+
+.delete {
+  color: red;
+}
+
+.supprimer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/**********************************************
+****************** FOOTER *********************
+**********************************************/
+
+footer {
+  margin-top: 30px;
+}
+
+.animateFooter {
+  animation: animateFooter 1s linear 1 alternate;
+}

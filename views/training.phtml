@@ -1,0 +1,35 @@
+<?php if (isset($_SESSION['user'])):?>
+    <h1>Révision de <?= htmlspecialchars($package['name']); ?></h1>
+
+    <?php if (isset($_SESSION['errors'])): ?>
+        <p><?= $_SESSION['errors']; ?></p>
+        <?php unset($_SESSION['errors']);
+    endif; ?>
+
+    <?php if (!empty($filtredCards)): ?>
+    <?php foreach ($filtredCards as $card): ?>
+        <p class="recto"><?= htmlspecialchars($card['recto']); ?></p>
+        <div class="response">Afficher la réponse</div>
+        <div class="hidden">
+            <p class="verso"><?= htmlspecialchars($card['verso']); ?></p>
+            <ul class="training">
+                <li><a title="A revoir" class="replay" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=1">A revoir</a></li>
+                <li><a title="Très difficile" class="veryHard" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=2">Très difficile</a></li>
+                <li><a title="Difficile" class="hard" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=3">Difficile</a></li>
+                <li><a title="Correct" class="correct" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=4">Correct</a></li>
+                <li><a title="Facile" class="easy" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=5">Facile</a></li>
+                <li><a title="Très facile" class="veryEasy" href="index.php?route=submitFormTraining&id=<?= $card['id'] ?>&level=6">Très facile</a></li>
+                <br>
+            </ul>
+        </div>
+    <?php break 1;
+    endforeach; ?>
+
+    <?php else: ?>
+        <p>Pas de révision pour le moment</p>
+    <?php endif; ?>
+
+<?php else:
+    header('location: index.php?route=home');
+    exit;
+endif; ?>
