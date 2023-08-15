@@ -8,12 +8,12 @@ Comme je le disais, le but de mon site est faire des révisions. Tout d'abord, l
 Sur l'image, il est possible de voir plusieurs options.
 
 Voici la liste des possibilités :
-A revoir : 10 minutes
-Très difficile : 1 jour
-Difficile : 2 jours
-Correct : 4 jours
-Facile : 1 semaine
-Très facile : 1 mois
+- A revoir : 10 minutes
+- Très difficile : 1 jour
+- Difficile : 2 jours
+- Correct : 4 jours
+- Facile : 1 semaine
+- Très facile : 1 mois
 
 Il est également possible de supprimer des cartes et de faire une recherche qui filtre les cartes qui ne correspondent pas à la recherche.
 
